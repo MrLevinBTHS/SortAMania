@@ -26,7 +26,51 @@ public class Team10SortCompetition extends SortCompetition {
 
     @Override
     public String greeting() {
-        return "THIS IS TEAM 10 BITCH, WHO THE HELLA FREAKIN YOU?";
+        return "WIP";
+    }
+
+    public static void swap(int[] arr, int a, int b){
+        int temp = arr[a];
+        arr[a]=arr[b];
+        arr[b] = temp;
+    }
+
+    public static void swap(String[] arr, int a, int b){
+        String temp = arr[a];
+        arr[a]=arr[b];
+        arr[b] = temp;
+    }
+
+    public static void swap(double[] arr, int a, int b){
+        double temp = arr[a];
+        arr[a]=arr[b];
+        arr[b] = temp;
+    }
+
+    public static void quickSort(int[] arr, int low, int high)
+    {
+        if (low < high)
+        {
+            int split = quickSortHelper(arr, low, high);
+
+            quickSort(arr, low, split - 1);  // Before pi
+            quickSort(arr, split + 1, high); // After pi
+        }
+    }
+
+    public static int quickSortHelper(int[] arr, int low, int high){
+        int top = arr[high];
+        int i = low -1;
+
+        for (int j = 0; j < high; j++){
+            if(arr[j] > top){
+                i++;
+                swap(arr, i ,j);
+            }
+        }
+        i++;
+        swap(arr, i, high);
+        return i;
     }
 
 
@@ -62,6 +106,7 @@ public class Team10SortCompetition extends SortCompetition {
         }
         return arr;
     }
+
     public static String print(int[] arr)
     {
         String result="";
