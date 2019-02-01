@@ -1,5 +1,15 @@
 public class Team5SortCompetition extends SortCompetition   {
 
+    public int median(int[] arr){
+        int len = arr.length;
+        int median = arr[(int)(len/2)];
+        if(len%2==0){
+            median = arr[(len/2)-1]+arr[len/2];
+            median = median/2;
+        }
+        return median;
+    }
+
     public int challengeOne(int[] arr){
         return 4;
     }
