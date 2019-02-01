@@ -62,4 +62,15 @@ public class Team10SortCompetition extends SortCompetition {
         }
         return arr;
     }
+    public static String print(int[] arr)
+    {
+        String result="";
+
+        for(int num: arr)
+        {
+            result += " " + num;
+        }
+        return result;
+    }
+
 }
