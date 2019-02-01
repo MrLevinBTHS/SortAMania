@@ -36,15 +36,41 @@ public class Team9SortCompetition extends SortCompetition
         int[] merged = new int[left.length + right.length];
         int l = 0;
         int r = 0;
-        for (int i = 0; i < merged.length; i++)
+        int i = 0;
+        for (; i < merged.length; i++)
         {
-            while (left[l] <= right[r] && r < right.length)
+            try
             {
-                merged[i] = right[r];
+                while (left[l] <= right[r])
+                {
+                    merged[i] = left[l];
+                    l++;
+                    i++;
+                }
+                while (right[r] <= left[l])
+                {
+                    merged[i] = right[r];
+                    r++;
+                    i++;
+                }
+            }
+            catch (ArrayIndexOutOfBoundsException exception)
+            {
+                break;
+            }
+        }
+        if (l < r)
+        {
+            while (l < left.length)
+            {
+                merged[i] = left[l];
                 l++;
                 i++;
             }
-            while (right[r] <= left[l] && l < left.length)
+        }
+        if (r < l)
+        {
+            while (r < right.length)
             {
                 merged[i] = right[r];
                 r++;
