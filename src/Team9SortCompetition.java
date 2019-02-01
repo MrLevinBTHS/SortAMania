@@ -2,7 +2,8 @@ public class Team9SortCompetition extends SortCompetition
 {
     public int challengeOne(int[] arr)
     {
-
+        SortingUtil.mergeSort(arr);
+        return (arr[4999] + arr[5000]) / 2;
     }
 
     public int challengeTwo(String[] arr, String query)
@@ -12,12 +13,17 @@ public class Team9SortCompetition extends SortCompetition
 
     public int challengeThree(int[] arr)
     {
-
+        SortingUtil.insertionSort(arr);
+        return (arr[49999] + arr[50000]) / 2;
     }
 
     public int challengeFour(int[][] arr)
     {
-
+        for (int i = 0; i < arr.length; i++)
+        {
+            SortingUtil.mergeSort(arr[i]);
+            
+        }
     }
 
     public int challengeFive(Comparable[] arr, Comparable query)
@@ -29,54 +35,5 @@ public class Team9SortCompetition extends SortCompetition
     public String greeting()
     {
 
-    }
-
-    public static int[] merge(int[] left, int[] right)
-    {
-        int[] merged = new int[left.length + right.length];
-        int l = 0;
-        int r = 0;
-        int i = 0;
-        for (; i < merged.length; i++)
-        {
-            try
-            {
-                while (left[l] <= right[r])
-                {
-                    merged[i] = left[l];
-                    l++;
-                    i++;
-                }
-                while (right[r] <= left[l])
-                {
-                    merged[i] = right[r];
-                    r++;
-                    i++;
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException exception)
-            {
-                break;
-            }
-        }
-        if (l < r)
-        {
-            while (l < left.length)
-            {
-                merged[i] = left[l];
-                l++;
-                i++;
-            }
-        }
-        if (r < l)
-        {
-            while (r < right.length)
-            {
-                merged[i] = right[r];
-                r++;
-                i++;
-            }
-        }
-        return merged;
     }
 }
