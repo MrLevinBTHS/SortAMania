@@ -25,14 +25,22 @@ public class sortAManiaTestRunner {
         return arr;
     }
 
-    public void printArr(){
+    public static void printArr(int[] arr){
+        for (int i = 0;i<arr.length;i++){
+            System.out.print(arr[i]+"  ");
+        }
+    }
 
+    public static void printArr(String[] arr){
+        for (int i = 0;i<arr.length;i++){
+            System.out.print(arr[i]+"  ");
+        }
     }
 
     public static void main(String[] args){
         SortCompetition team1 = new Team5SortCompetition();
         int[] randIntArr = randIntArr(10000);
-        String[] randStringArr = randStringArr(10000, 5);
+        String[] randStringArr = randomStringArr(10000, 5);
 
         System.out.println("Unsorted");
         printArr(randIntArr);
