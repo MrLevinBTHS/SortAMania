@@ -3,51 +3,39 @@ public class SortingUtil
     //challengeOne
     private static void merge(int[] elements, int from, int mid, int to, int[] temp)
     {
-        merged = new int[arr.length];
-        left = 0;
-        int r = 0;
-        int i = 0;
-        for (; i < merged.length; i++)
+        int i = from;
+        int j = mid + 1;
+        int k = from;
+        while (i <= mid && j <= to)
         {
-            try
+            if (elements[i] < elements[j])
             {
-                while (left[l] <= right[r])
-                {
-                    merged[i] = left[l];
-                    l++;
-                    i++;
-                }
-                while (right[r] <= left[l])
-                {
-                    merged[i] = right[r];
-                    r++;
-                    i++;
-                }
-            }
-            catch (ArrayIndexOutOfBoundsException exception)
-            {
-                break;
-            }
-        }
-        if (l < r)
-        {
-            while (l < left.length)
-            {
-                merged[i] = left[l];
-                l++;
+                temp[k] = elements[i];
                 i++;
             }
-        }
-        if (r < l)
-        {
-            while (r < right.length)
+            else
             {
-                merged[i] = right[r];
-                r++;
-                i++;
+                temp[k] = elements[j];
+                j++;
             }
+            k++;
         }
-        return merged;
+        while (i <= mid)
+        {
+            temp[k] = elements[i];
+            i++;
+            k++;
+        }
+        while (j <= to)
+        {
+            temp[k] = elements[j];
+            j++;
+            k++;
+        }
+        for (k = from; k <= to; k++)
+        {
+            elements[k] = temp[k];
+        }
     }
     public static void mergeSort(int[] elements)
     {
