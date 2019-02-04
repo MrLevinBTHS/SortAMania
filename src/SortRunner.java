@@ -5,7 +5,7 @@ public class SortRunner {
         print("Challenge 1 Test");
         print("Unsorted List:");
         print(Team10SortCompetition.print(randomInts));
-        ((Team10SortCompetition) sorter).quickSort(randomInts, 0, randomInts.length-2);
+        ((Team10SortCompetition) sorter).quickSort(randomInts, 0, randomInts.length-1);
         print(Team10SortCompetition.print(randomInts));
     }
 

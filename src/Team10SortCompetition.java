@@ -54,7 +54,7 @@ public class Team10SortCompetition extends SortCompetition {
             int split = quickSortHelper(arr, low, high);
 
             quickSort(arr, low, split - 1);  // Before pi
-            quickSort(arr, split + 1, high); // After pi
+            quickSort(arr, split +1, high); // After pi
         }
     }
 
@@ -62,8 +62,8 @@ public class Team10SortCompetition extends SortCompetition {
         int top = arr[high];
         int i = low -1;
 
-        for (int j = 0; j < high; j++){
-            if(arr[j] > top){
+        for (int j = low; j < high; j++){
+            if(arr[j] <= top){
                 i++;
                 swap(arr, i ,j);
             }
