@@ -106,6 +106,15 @@ public class Team10SortCompetition extends SortCompetition {
         }
         return arr;
     }
+        public static Comparable[] randomThingArray(int num)
+        {
+            Comparable[] things = new Comparable[num];
+            for(int i = 0; i <num; i++)
+            {
+                things[i] = new Thing();
+            }
+            return things;
+        }
 
     public static String print(int[] arr)
     {
