@@ -39,20 +39,61 @@ public class sortAManiaTestRunner {
 
     public static void main(String[] args){
         SortCompetition team5 = new Team5SortCompetition();
-        int[] randIntArr = randIntArr(10000);
+
+        // Challenge #1
+        System.out.println("Challenge #1");
+        int[] randIntArr1 = randIntArr(10000);
+
+        System.out.println("Unsorted");
+        printArr(randIntArr1);
+
+        long time1 = System.currentTimeMillis();
+        int median1 = team5.challengeOne(randIntArr1);
+        time1 = System.currentTimeMillis() - time1;
+        System.out.println();
+        System.out.println("Challenge One Time Taken: "+time1*0.001+" Seconds");
+        System.out.println("Median equals: " + median1);
+
+        System.out.println("Sorted");
+        printArr(randIntArr1);
+        System.out.println();
+
+
+        //Challenge #2
+        System.out.println("Challenge #2");
         String[] randStringArr = randomStringArr(10000, 5);
 
         System.out.println("Unsorted");
-        printArr(randIntArr);
+        printArr(randStringArr);
 
-        long time = System.currentTimeMillis();
-        int median = team5.challengeOne(randIntArr);
-        time = System.currentTimeMillis() - time;
+        long time2 = System.currentTimeMillis();
+        int pos = team5.challengeTwo(randStringArr, "aabxi");
+        time2 = System.currentTimeMillis() - time2;
         System.out.println();
-        System.out.println("Challenge One Time Taken: "+time*0.001+" Seconds");
-        System.out.println("Median equals: " + median);
+        System.out.println(pos);
+        System.out.println("Challenge One Time Taken: "+time2*0.001+" Seconds");
 
         System.out.println("Sorted");
-        printArr(randIntArr);
+        printArr(randStringArr);
+
+
+        // Challenge #3
+        System.out.println();
+        System.out.println("Challenge #3");
+        int[] randIntArr2 = randIntArr(10000);
+
+        System.out.println("Unsorted");
+        printArr(randIntArr2);
+
+        long time3 = System.currentTimeMillis();
+        int median2 = team5.challengeThree(randIntArr2);
+        time3 = System.currentTimeMillis() - time3;
+        System.out.println();
+        System.out.println("Challenge One Time Taken: "+time3*0.001+" Seconds");
+        System.out.println("Median equals: " + median2);
+
+        System.out.println("Sorted");
+        printArr(randIntArr2);
+        System.out.println();
     }
 }

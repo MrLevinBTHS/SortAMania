@@ -19,24 +19,22 @@ public class Team5SortCompetition extends SortCompetition   {
         arr[j]=t;
     }
 
-    public static void SelectionSort (String[] arr){
-        int curPos = 0;
-        int minPos = 0;
-        String minValue = arr[curPos];
-        while(curPos<arr.length){
-            minPos = curPos;
-            minValue = arr[curPos];
-            for(int i = curPos +1;i<arr.length;i++){
+    public static void selectionSort(String[] arr){
+        int n = arr.length;
 
-                if(arr[i].compareTo(minValue)<0){
-                    minValue = arr[i];
-                    minPos = i;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min = i;
+            for (int j = i+1; j < n; j++) {
+                if (arr[j].compareTo(arr[min])<0) {
+                    min = j;
                 }
             }
-            swap(arr,minPos,curPos);
-            curPos++;
+            swap(arr, min , i);
         }
     }
+
+
     public static void BubbleSort(String[] arr){
         int x = arr.length-1;
         int stop;
@@ -74,22 +72,18 @@ public class Team5SortCompetition extends SortCompetition   {
         arr[j]=t;
     }
 
-    public static void SelectionSort (int[] arr){
-        int curPos = 0;
-        int minPos = 0;
-        int minValue = arr[curPos];
-        while(curPos<arr.length){
-            minPos = curPos;
-            minValue = arr[curPos];
-            for(int i = curPos +1;i<arr.length;i++){
+    public static void selectionSort(int[] list1){
+        int n = list1.length;
 
-                if(arr[i]<minValue){
-                    minValue = arr[i];
-                    minPos = i;
+        for (int i = 0; i < n-1; i++)
+        {
+            int min = i;
+            for (int j = i+1; j < n; j++) {
+                if (list1[j] < list1[min]) {
+                    min = j;
                 }
             }
-            swap(arr,minPos,curPos);
-            curPos++;
+            swap(list1, min , i);
         }
     }
 
@@ -111,6 +105,18 @@ public class Team5SortCompetition extends SortCompetition   {
     }
 
     public static void InsertionSort (int[] arr){
+        for(int i = 0;i<arr.length;i++){
+            for(int j = i;j>0;j--){
+                if(arr[j]<arr[j-1]){
+                    swap(arr,j,j-1);
+                }
+                else{
+                    break;
+                }
+            }
+        }
+    }
+    public static void InsertionSort (int[][] arr){
         for(int i = 0;i<arr.length;i++){
             for(int j = i;j>0;j--){
                 if(arr[j]<arr[j-1]){
@@ -178,6 +184,11 @@ public class Team5SortCompetition extends SortCompetition   {
     }
 
     public static int look (String[] arr,String word){
+        for(int i=0; i<arr.length;i++){
+            if (arr[i].equals(word)){
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -194,10 +205,14 @@ public class Team5SortCompetition extends SortCompetition   {
     }
 
     public int challengeThree(int[] arr){
-        return 2;
+        InsertionSort(arr);
+        return median(arr);
     }
 
     public int challengeFour(int[][] arr){
+        for(){
+
+        }
         return 1;
     }
 
