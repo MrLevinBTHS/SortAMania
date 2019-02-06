@@ -104,6 +104,27 @@ public class Team10SortCompetition extends SortCompetition {
         return i;
     }
     ////
+    public static int binarySearch(int[] arr, int target)
+    {
+        int min=0;
+        int max=0;
+        while(min<= max)
+        {
+            int middle= (min+max)/2;
+            if(target> arr[middle])
+            {
+                min=middle+1;
+
+            } else if(target< arr[middle])
+            {
+                max=middle-1;
+            }else
+            {
+                return middle;
+            }
+        }
+        return -1;
+    }
 
 
     public static int[] randIntArr(int count){
