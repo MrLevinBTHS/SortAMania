@@ -1,12 +1,13 @@
 public class Team10SortCompetition extends SortCompetition {
     @Override
     public int challengeOne(int[] arr) {
-        return 0;
+        quickSort(arr, 0, arr.length-1);
+        return getMedian(arr);
     }
 
     @Override
     public int challengeTwo(String[] arr, String query) {
-        return 0;
+
     }
 
     @Override
@@ -47,6 +48,7 @@ public class Team10SortCompetition extends SortCompetition {
         arr[b] = temp;
     }
 
+    //Quicksort for Ints
     public static void quickSort(int[] arr, int low, int high)
     {
         if (low < high)
@@ -72,6 +74,36 @@ public class Team10SortCompetition extends SortCompetition {
         swap(arr, i, high);
         return i;
     }
+    //
+
+    //QuickSort for Strings
+    public static void quickSort(String[] arr, int low, int high)
+    {
+        if (low < high)
+        {
+            int split = quickSortHelper(arr, low, high);
+
+            quickSort(arr, low, split - 1);  // Before pi
+            quickSort(arr, split +1, high); // After pi
+        }
+    }
+
+    public static int quickSortHelper(String[] arr, int low, int high){
+        String top = arr[high];
+        int i = low -1;
+
+        for (int j = low; j < high; j++){
+            if(arr[j].compareTo(top) < 0){
+                i++;
+                swap(arr, i ,j);
+            }
+        }
+
+        i++;
+        swap(arr, i, high);
+        return i;
+    }
+    ////
 
 
     public static int[] randIntArr(int count){
@@ -88,6 +120,19 @@ public class Team10SortCompetition extends SortCompetition {
             lol[i] = (Math.random() * 10001);
         }
         return lol;
+    }
+
+    public static void insertionSort(int[] arr){
+        for (int i = 1; i < arr.length; i++){
+            for (int j = i; j > 0; j--){
+                if(arr[j-1] > arr[j]){
+                    swap(arr, j, j-1);
+                }
+                else {
+                    break;
+                }
+            }
+        }
     }
 
     public static String[] randStringArr(int length, int count){
@@ -125,6 +170,20 @@ public class Team10SortCompetition extends SortCompetition {
             result += " " + num;
         }
         return result;
+    }
+
+    public static int getMedian(int[] sortedArray){
+        int l = sortedArray.length;
+        int mid = l/2;
+        if(l == 0){
+            return -1;
+        }
+        if (l % 2 == 0){
+            return ((sortedArray[mid]+sortedArray[mid-1])/2);
+        }
+        else {
+            return (sortedArray[mid]);
+        }
     }
 
 }
