@@ -7,7 +7,8 @@ public class Team10SortCompetition extends SortCompetition {
 
     @Override
     public int challengeTwo(String[] arr, String query) {
-
+        quickSort(arr, 0, arr.length-1);
+        return -1;
     }
 
     @Override
@@ -187,6 +188,17 @@ public class Team10SortCompetition extends SortCompetition {
         String result="";
 
         for(int num: arr)
+        {
+            result += " " + num;
+        }
+        return result;
+    }
+
+    public static String print(String[] arr)
+    {
+        String result="";
+
+        for(String num: arr)
         {
             result += " " + num;
         }
