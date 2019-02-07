@@ -3,6 +3,7 @@ import java.sql.SQLOutput;
 public class sortAManiaTestRunner {
 
 
+
     public static int[] randIntArr(int count){
         int[] arr = new int[count];
         for(int i = 0; i<count;i++){
@@ -44,7 +45,7 @@ public class sortAManiaTestRunner {
             for(int j=0; j<arr[i].length; j++) {
                 System.out.print(arr[i][j] + "  ");
             }
-            System.out.println("");
+            System.out.println("  ");
         }
     }
 

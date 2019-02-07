@@ -67,11 +67,11 @@ public class Team5SortCompetition extends SortCompetition   {
 
     // int arrays
     public static int[] copy(int[] i){
-        int[] copy = new int[i.length];
+        int[] arr = new int[i.length];
         for (int j=0; j<i.length; j++){
-            copy[j] = i[j];
+            arr[j] = i[j];
         }
-        return copy;
+        return arr;
     }
 
     public static void swap(int[] arr,int i, int j){
@@ -198,6 +198,60 @@ public class Team5SortCompetition extends SortCompetition   {
             arr[k] = temp[k];
         }
     }
+//////////////////////////////////////////////////////////////////////////
+    public static void mergeSort(int[][] arr) {
+        int length = arr.length;
+        int[][] temp = new int[length][arr[0].length];
+        mergeSortHelper(arr, 0, length-1, temp);
+    }
+
+    private static void mergeSortHelper(int[][] arr, int low, int high, int[][] temp)
+    {
+        if (low < high)
+        {
+            int mid = (low + high) / 2;
+            mergeSortHelper(arr, low, mid, temp);
+            mergeSortHelper(arr, mid + 1, high, temp);
+            merge(arr, low, mid, high, temp);
+        }
+    }
+
+    private static void merge(int[][] arr, int low, int mid, int high, int[][] temp)
+    {
+        int i = low;
+        int j = mid + 1;
+        int k = low;
+        while (i <= mid && j <= high)
+        {
+            if (median(arr[i]) < median(arr[j]))
+            {
+                temp[k] = copy(arr[i]);
+                i++;
+            }
+            else
+            {
+                temp[k] = copy(arr[j]);
+                j++;
+            }
+            k++;
+        }
+        while (i <= mid)
+        {
+            temp[k] = copy(arr[i]);
+            i++;
+            k++;
+        }
+        while (j <= high)
+        {
+            temp[k] = copy(arr[j]);
+            j++;
+            k++;
+        }
+        for (k = low; k <= high; k++)
+        {
+            arr[k] = copy(temp[k]);
+        }
+    }
 
 
     public static int look (String[] arr,String word){
@@ -231,7 +285,7 @@ public class Team5SortCompetition extends SortCompetition   {
         for(int i = 0;i<arr.length;i++){
             mergeSort(arr[i]);
         }
-        //InsertionSort(arr);
+        mergeSort(arr);
         return 1;
     }
 
