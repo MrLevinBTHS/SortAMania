@@ -2,7 +2,7 @@ public class Team5SortCompetition extends SortCompetition   {
 
 
 
-    public int median(int[] arr){
+    public static int median(int[] arr){
         int len = arr.length;
         int median = arr[(int)(len/2)];
         if(len%2==0){
@@ -18,6 +18,7 @@ public class Team5SortCompetition extends SortCompetition   {
         arr[i] = arr[j];
         arr[j]=t;
     }
+
 
     public static void selectionSort(String[] arr){
         int n = arr.length;
@@ -64,12 +65,38 @@ public class Team5SortCompetition extends SortCompetition   {
         }
     }
 
-
     // int arrays
+    public static int[] copy(int[] i){
+        int[] copy = new int[i.length];
+        for (int j=0; j<i.length; j++){
+            copy[j] = i[j];
+        }
+        return copy;
+    }
+
     public static void swap(int[] arr,int i, int j){
         int t = arr[i];
         arr[i] = arr[j];
         arr[j]=t;
+    }
+
+    public static void swap(int[][] arr, int i, int j){
+        int[] t = copy(arr[i]);
+        arr[i] = copy(arr[j]);
+        arr[j] = t;
+    }
+
+    public static void InsertionSort (int[][] arr){
+        for(int i = 0;i<arr.length;i++){
+            for(int j = i;j>0;j--){
+                if(median(arr[j])<median(arr[j+1])){
+                    swap(arr,j,j-1);
+                }
+                else{
+                    break;
+                }
+            }
+        }
     }
 
     public static void selectionSort(int[] list1){
@@ -116,19 +143,8 @@ public class Team5SortCompetition extends SortCompetition   {
             }
         }
     }
-    public static void InsertionSort (int[][] arr){
-        for(int i = 0;i<arr.length;i++){
-            for(int j = i;j>0;j--){
-                if(arr[j]<arr[j-1]){
-                    swap(arr,j,j-1);
-                }
-                else{
-                    break;
-                }
-            }
-        }
-    }
 
+    // Merge #1
     public static void mergeSort(int[] arr) {
         int length = arr.length;
         int[] temp = new int[length];
@@ -183,6 +199,7 @@ public class Team5SortCompetition extends SortCompetition   {
         }
     }
 
+
     public static int look (String[] arr,String word){
         for(int i=0; i<arr.length;i++){
             if (arr[i].equals(word)){
@@ -210,9 +227,11 @@ public class Team5SortCompetition extends SortCompetition   {
     }
 
     public int challengeFour(int[][] arr){
-        for(){
 
+        for(int i = 0;i<arr.length;i++){
+            mergeSort(arr[i]);
         }
+        //InsertionSort(arr);
         return 1;
     }
 

@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class sortAManiaTestRunner {
 
 
@@ -37,9 +39,18 @@ public class sortAManiaTestRunner {
         }
     }
 
+    public static void printArr(int[][] arr){
+        for (int i = 0;i<arr.length;i++){
+            for(int j=0; j<arr[i].length; j++) {
+                System.out.print(arr[i][j] + "  ");
+            }
+            System.out.println("");
+        }
+    }
+
     public static void main(String[] args){
         SortCompetition team5 = new Team5SortCompetition();
-
+        /**
         // Challenge #1
         System.out.println("Challenge #1");
         int[] randIntArr1 = randIntArr(10000);
@@ -94,6 +105,29 @@ public class sortAManiaTestRunner {
 
         System.out.println("Sorted");
         printArr(randIntArr2);
+        System.out.println();
+
+         */
+        // Challenge #4
+        System.out.println();
+        System.out.println("Challenge #4");
+        int[][] randIntArr3 = new int[10][10];
+        for(int i = 0; i<randIntArr3.length;i++){
+            randIntArr3[i] = randIntArr(10);
+        }
+
+        System.out.println("Unsorted");
+        printArr(randIntArr3);
+
+        long time4 = System.currentTimeMillis();
+        int median3 = team5.challengeFour(randIntArr3);
+        time4 = System.currentTimeMillis() - time4;
+        System.out.println();
+        System.out.println("Challenge Four Time Taken: "+time4*0.001+" Seconds");
+        System.out.println("Median equals: " + median3);
+
+        System.out.println("Sorted");
+        printArr(randIntArr3);
         System.out.println();
     }
 }
