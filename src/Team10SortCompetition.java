@@ -8,17 +8,26 @@ public class Team10SortCompetition extends SortCompetition {
     @Override
     public int challengeTwo(String[] arr, String query) {
         quickSort(arr, 0, arr.length-1);
-        return -1;
+        return binarySearch(arr, query);
     }
 
     @Override
     public int challengeThree(int[] arr) {
-        return 0;
+        mergeSort(arr);
+        return  getMedian(arr);
     }
 
     @Override
     public int challengeFour(int[][] arr) {
-        return 0;
+        for(int i = 0; i < arr.length; i++){
+            insertionSort(arr[i]);
+        }
+        int[] medians = new int[arr.length];
+        for(int i = 0 ; i < arr.length; i++){
+            medians[i] = getMedian(arr[i]);
+        }
+        insertionSort(medians);
+        return(getMedian(medians));
     }
 
     @Override
@@ -77,6 +86,50 @@ public class Team10SortCompetition extends SortCompetition {
     }
     //
 
+    public static void mergeSort(int[] arr){
+        int n = arr.length;
+        int[] temp = new int[n];
+        mergeSortHelper(arr,0,n-1,temp);
+    }
+
+    public static void merge(int[] elements, int from, int mid, int to, int[] temp){
+        int i = from;
+        int j = mid + 1;
+        int k = from;
+        while (i <= mid && j <= to){
+            if (elements[i] < elements[j]){
+                temp[k] = elements[i];
+                i++;
+            }
+            else{
+                temp[k] = elements[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= mid){
+            temp[k] = elements[i];
+            i++;
+            k++;
+        }
+        while (j <= to){
+            temp[k] = elements[j];
+            j++;
+            k++;
+        }
+        for (k = from; k <= to; k++){
+            elements[k] = temp[k];
+        }
+    }
+    public static void mergeSortHelper(int[] arr, int left, int right, int[] temp){
+        if (left < right){
+            int mid = (left+right)/2;
+            mergeSortHelper(arr,left, mid,temp);
+            mergeSortHelper(arr,mid+1,right,temp);
+            merge(arr, left, mid, right, temp);
+        }
+    }
+
     //QuickSort for Strings
     public static void quickSort(String[] arr, int low, int high)
     {
@@ -123,6 +176,21 @@ public class Team10SortCompetition extends SortCompetition {
             {
                 return middle;
             }
+        }
+        return -1;
+    }
+
+    public static int binarySearch(String[] arr, String x) {
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            int res = x.compareTo(arr[m]);
+            if (res == 0)
+                return m;
+            if (res > 0)
+                l = m + 1;
+            else
+                r = m - 1;
         }
         return -1;
     }
