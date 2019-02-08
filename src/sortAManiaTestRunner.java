@@ -1,5 +1,3 @@
-import java.sql.SQLOutput;
-
 public class sortAManiaTestRunner {
 
 
@@ -108,7 +106,7 @@ public class sortAManiaTestRunner {
         printArr(randIntArr2);
         System.out.println();
 
-         */
+
         // Challenge #4
         System.out.println();
         System.out.println("Challenge #4");
@@ -130,5 +128,25 @@ public class sortAManiaTestRunner {
         System.out.println("Sorted");
         printArr(randIntArr3);
         System.out.println();
+         */
+
+        // Challenge #5
+        System.out.println("Challenge #5");
+        int[] randIntArr1 = randIntArr(10000);
+
+        System.out.println("Unsorted");
+        printArr(randIntArr1);
+
+        long time1 = System.currentTimeMillis();
+        int median1 = team5.challengeOne(randIntArr1);
+        time1 = System.currentTimeMillis() - time1;
+        System.out.println();
+        System.out.println("Challenge One Time Taken: "+time1*0.001+" Seconds");
+        System.out.println("Median equals: " + median1);
+
+        System.out.println("Sorted");
+        printArr(randIntArr1);
+        System.out.println();
+
     }
 }

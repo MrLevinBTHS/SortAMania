@@ -198,7 +198,11 @@ public class Team5SortCompetition extends SortCompetition   {
             arr[k] = temp[k];
         }
     }
+
+
 //////////////////////////////////////////////////////////////////////////
+
+    // Merge #2
     public static void mergeSort(int[][] arr) {
         int length = arr.length;
         int[][] temp = new int[length][arr[0].length];
@@ -254,9 +258,73 @@ public class Team5SortCompetition extends SortCompetition   {
     }
 
 
+    // Merge #3
+    public static void mergeSort(Comparable[] arr) {
+        int length = arr.length;
+        Comparable[] temp = new Comparable[length];
+        mergeSortHelper(arr, 0, length-1, temp);
+    }
+
+    private static void mergeSortHelper(Comparable[] arr, int low, int high, Comparable[] temp)
+    {
+        if (low < high)
+        {
+            int mid = (low + high) / 2;
+            mergeSortHelper(arr, low, mid, temp);
+            mergeSortHelper(arr, mid + 1, high, temp);
+            merge(arr, low, mid, high, temp);
+        }
+    }
+
+    private static void merge(Comparable[] arr, int low, int mid, int high, Comparable[] temp)
+    {
+        int i = low;
+        int j = mid + 1;
+        int k = low;
+        while (i <= mid && j <= high)
+        {
+            if (arr[i].compareTo(arr[j]) < 0)
+            {
+                temp[k] = arr[i];
+                i++;
+            }
+            else
+            {
+                temp[k] = arr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= mid)
+        {
+            temp[k] = arr[i];
+            i++;
+            k++;
+        }
+        while (j <= high)
+        {
+            temp[k] = arr[j];
+            j++;
+            k++;
+        }
+        for (k = low; k <= high; k++)
+        {
+            arr[k] = temp[k];
+        }
+    }
+
     public static int look (String[] arr,String word){
         for(int i=0; i<arr.length;i++){
             if (arr[i].equals(word)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int look (Comparable[] arr,Comparable thing){
+        for(int i=0; i<arr.length;i++){
+            if (arr[i].equals(thing)){
                 return i;
             }
         }
@@ -286,11 +354,14 @@ public class Team5SortCompetition extends SortCompetition   {
             mergeSort(arr[i]);
         }
         mergeSort(arr);
-        return 1;
+        int len = arr.length;
+        int median = (median(arr[(len/2)-1]) + median(arr[len/2]))/2;
+        return median;
     }
 
     public int challengeFive(Comparable[] arr, Comparable query){
-        return 0;
+        mergeSort(arr);
+        return look(arr,query);
     }
 
     //Add a custom greeting so your sorter can introduce itself
