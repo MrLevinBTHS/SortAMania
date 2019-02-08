@@ -1,3 +1,4 @@
+// Team 10 Sort Competition: Ari Khaytser and Linyao Pan
 public class Team10SortCompetition extends SortCompetition {
     @Override
     public int challengeOne(int[] arr) {
