@@ -53,6 +53,6 @@ public class Team9SortCompetition extends SortCompetition
     //Add a custom greeting so your sorter can introduce itself
     public String greeting()
     {
-        return "lagging";
+        return "Arrays.sort(my life)";
     }
 }

@@ -5,31 +5,22 @@ public class SortingUtil
 
 
     //challengeTwo
-    //timsort
+
 
 
     //challengeThree
-    public static void Swap(int[] array, int x, int y)
+    public static void insertionSort(int[] arr)
     {
-        int temp = array[x];
-        array[x] = array[y];
-        array[y] = temp;
-    }
-    public static void insertionSort(int[] list1)
-    {
-        for (int i = 1; i < list1.length; i++)
+        for (int i = 1; i < arr.length; i++)
         {
-            for (int ii = i; ii > 0; ii--)
+            int h = i-1;
+            int temp = arr[i];
+            while (h >= 0 && temp < arr[h])
             {
-                if (list1[ii] < list1[ii - 1])
-                {
-                    Swap(list1, ii, ii - 1);
-                }
-                else
-                {
-                    break;
-                }
+                arr[h+1] = arr[h];
+                h--;
             }
+            arr[h+1] = temp;
         }
     }
 
