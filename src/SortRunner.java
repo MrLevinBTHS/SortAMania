@@ -18,6 +18,11 @@ public class SortRunner {
                 cancerArray[x][y] = (int)(Math.random()*10001);
             }
         }
+        Thing[] thingArray = new Thing[10000];
+        for (int i =0; i < thingArray.length; i++){
+            thingArray[i] = new Thing();
+        }
+        thingArray[6] = new Thing(5555);
 
 
 
@@ -25,18 +30,18 @@ public class SortRunner {
         print("Challenge 1 Test");
         print("Unsorted List:");
         long time = System.nanoTime();
-        print(Team10SortCompetition.print(randomInts));
+        //print(Team10SortCompetition.print(randomInts));
         print("Median: " + sorter.challengeOne(randomInts));
-        print(Team10SortCompetition.print(randomInts));
+        //print(Team10SortCompetition.print(randomInts));
         print("Time taken: " + (System.nanoTime()-time) + "\n\n\n");
 
         //Challenge 2
         print("Challenge 2 Test");
         print("Unsorted List:");
         long time2 = System.nanoTime();
-        print(Team10SortCompetition.print(randomStrings));
+        //print(Team10SortCompetition.print(randomStrings));
         print("Query found at: " + sorter.challengeTwo(randomStrings, "abcde"));
-        print(Team10SortCompetition.print(randomStrings));
+        //print(Team10SortCompetition.print(randomStrings));
         print("Time taken: " + (System.nanoTime()-time2) + "\n\n\n");
 
         //Challenge 3
@@ -44,7 +49,7 @@ public class SortRunner {
         print("Unsorted List:");
         long time3 = System.nanoTime();
         //print(Team10SortCompetition.print(mostlySorted));
-        //print("Median: " + sorter.challengeThree(mostlySorted));
+        print("Median: " + sorter.challengeThree(mostlySorted));
         //print(Team10SortCompetition.print(mostlySorted));
         print("Time taken: " + (System.nanoTime()-time3) + "\n\n\n");
 
@@ -54,6 +59,13 @@ public class SortRunner {
         long time4 = System.nanoTime();
         print("Median: " + sorter.challengeFour(cancerArray));
         print("Time taken: " + (System.nanoTime()-time4) + "\n\n\n");
+
+        //Challenge 5
+        print("Challenge 5 Test");
+        print("Unsorted List:");
+        long time5 = System.nanoTime();
+        print("Query: " + sorter.challengeFive(thingArray, new Thing(5555)));
+        print("Time taken: " + (System.nanoTime()-time5) + "\n\n\n");
     }
 
     public static void print(Object o){

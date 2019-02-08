@@ -32,12 +32,19 @@ public class Team10SortCompetition extends SortCompetition {
 
     @Override
     public int challengeFive(Comparable[] arr, Comparable query) {
-        return 0;
+        insertionSort(arr);
+        return binarySearch(arr, query);
     }
 
     @Override
     public String greeting() {
-        return "WIP";
+        return "THIS IS TEAM 10, WHO THE HELLA FREAKIN YOU?";
+    }
+
+    public static void swap(Comparable[] arr, int a, int b){
+        Comparable temp = arr[a];
+        arr[a]=arr[b];
+        arr[b] = temp;
     }
 
     public static void swap(int[] arr, int a, int b){
@@ -180,6 +187,21 @@ public class Team10SortCompetition extends SortCompetition {
         return -1;
     }
 
+    public static int binarySearch(Comparable[] arr, Comparable x) {
+        int l = 0, r = arr.length - 1;
+        while (l <= r) {
+            int m = l + (r - l) / 2;
+            int res = x.compareTo(arr[m]);
+            if (res == 0)
+                return m;
+            if (res > 0)
+                l = m + 1;
+            else
+                r = m - 1;
+        }
+        return -1;
+    }
+
     public static int binarySearch(String[] arr, String x) {
         int l = 0, r = arr.length - 1;
         while (l <= r) {
@@ -216,6 +238,19 @@ public class Team10SortCompetition extends SortCompetition {
         for (int i = 1; i < arr.length; i++){
             for (int j = i; j > 0; j--){
                 if(arr[j-1] > arr[j]){
+                    swap(arr, j, j-1);
+                }
+                else {
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void insertionSort(Comparable[] arr){
+        for (int i = 1; i < arr.length; i++){
+            for (int j = i; j > 0; j--){
+                if(arr[j-1].compareTo(arr[j]) > 0){
                     swap(arr, j, j-1);
                 }
                 else {
