@@ -1,4 +1,5 @@
 // Team 10 Sort Competition: Ari Khaytser and Linyao Pan
+//AP CSA
 public class Team10SortCompetition extends SortCompetition {
     @Override
     public int challengeOne(int[] arr) {
