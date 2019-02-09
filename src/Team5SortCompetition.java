@@ -1,6 +1,47 @@
 public class Team5SortCompetition extends SortCompetition   {
 
 
+    public static int binarySearch(String[] arr, String word){
+        int leftPos = 0;
+        int rightPos = arr.length-1;
+        while (leftPos <= rightPos ){
+            int mid = (leftPos + rightPos )/2;
+            if (arr[mid].compareTo(word)>0){
+                rightPos  = mid -1;
+            }
+            else if (arr[mid].compareTo(word)<0){
+                leftPos = mid + 1;
+            }
+            else{
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    public static int binarySearch(Comparable[] arr, Comparable thing){
+        int leftPos = 0;
+        int rightPos = arr.length-1;
+        while (leftPos <= rightPos ){
+            int mid = (leftPos + rightPos )/2;
+            if(arr[mid]==thing){
+                return mid;
+            }
+            else if (arr[mid].compareTo(thing)>0){
+                rightPos  = mid -1;
+            }
+            else if (arr[mid].compareTo(thing)<0){
+                leftPos = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+
+
+
+
+
 
     public static int median(int[] arr){
         int len = arr.length;
@@ -340,7 +381,7 @@ public class Team5SortCompetition extends SortCompetition   {
 
     public int challengeTwo(String[] arr, String query){
         InsertionSort(arr);
-        return look(arr, query);
+        return binarySearch(arr, query);
     }
 
     public int challengeThree(int[] arr){
@@ -361,7 +402,7 @@ public class Team5SortCompetition extends SortCompetition   {
 
     public int challengeFive(Comparable[] arr, Comparable query){
         mergeSort(arr);
-        return look(arr,query);
+        return binarySearch(arr,query);
     }
 
     //Add a custom greeting so your sorter can introduce itself
