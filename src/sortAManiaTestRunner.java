@@ -131,6 +131,8 @@ public class sortAManiaTestRunner {
          */
 
         // Challenge #5
+
+        /**
         System.out.println("Challenge #5");
         int[] randIntArr1 = randIntArr(10000);
 
@@ -147,6 +149,26 @@ public class sortAManiaTestRunner {
         System.out.println("Sorted");
         printArr(randIntArr1);
         System.out.println();
+        */
 
+
+
+
+
+
+        String word = "query";
+        Comparable[] array5 = randomStringArr(10,5);
+        array5[7]=word;
+        printArr(array5);
+
+        System.out.println(team5.challengeFive(array5,word));
+        printArr(array5);
+
+    }
+    public static void printArr(Comparable[] arr){
+        for (int i = 0;i<arr.length;i++){
+            System.out.print(arr[i].toString()+"  ");
+        }
+        System.out.println("");
     }
 }

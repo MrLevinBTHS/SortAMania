@@ -324,7 +324,7 @@ public class Team5SortCompetition extends SortCompetition   {
 
     public static int look (Comparable[] arr,Comparable thing){
         for(int i=0; i<arr.length;i++){
-            if (arr[i].equals(thing)){
+            if (arr[i] == thing){
                 return i;
             }
         }
