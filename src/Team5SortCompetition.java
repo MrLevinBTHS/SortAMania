@@ -407,7 +407,7 @@ public class Team5SortCompetition extends SortCompetition   {
 
     //Add a custom greeting so your sorter can introduce itself
     public String greeting(){
-        return ("i hate jazmine");
+        return ("Team 5 Sort Competition: Sanjay and Jazmine");
     }
 
 }
