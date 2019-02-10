@@ -49,7 +49,7 @@ public class sortAManiaTestRunner {
 
     public static void main(String[] args){
         SortCompetition team5 = new Team5SortCompetition();
-        /**
+
         // Challenge #1
         System.out.println("Challenge #1");
         int[] randIntArr1 = randIntArr(10000);
@@ -67,6 +67,9 @@ public class sortAManiaTestRunner {
         System.out.println("Sorted");
         printArr(randIntArr1);
         System.out.println();
+
+
+
 
 
         //Challenge #2
@@ -87,6 +90,9 @@ public class sortAManiaTestRunner {
         printArr(randStringArr);
 
 
+
+
+
         // Challenge #3
         System.out.println();
         System.out.println("Challenge #3");
@@ -105,6 +111,10 @@ public class sortAManiaTestRunner {
         System.out.println("Sorted");
         printArr(randIntArr2);
         System.out.println();
+
+
+
+
 
 
         // Challenge #4
@@ -128,34 +138,11 @@ public class sortAManiaTestRunner {
         System.out.println("Sorted");
         printArr(randIntArr3);
         System.out.println();
-         */
+
+
 
         // Challenge #5
-
-        /**
         System.out.println("Challenge #5");
-        int[] randIntArr1 = randIntArr(10000);
-
-        System.out.println("Unsorted");
-        printArr(randIntArr1);
-
-        long time1 = System.currentTimeMillis();
-        int median1 = team5.challengeOne(randIntArr1);
-        time1 = System.currentTimeMillis() - time1;
-        System.out.println();
-        System.out.println("Challenge One Time Taken: "+time1*0.001+" Seconds");
-        System.out.println("Median equals: " + median1);
-
-        System.out.println("Sorted");
-        printArr(randIntArr1);
-        System.out.println();
-        */
-
-
-
-
-
-
         String word = "query";
         Comparable[] array5 = randomStringArr(10,5);
         array5[7]=word;
@@ -164,6 +151,10 @@ public class sortAManiaTestRunner {
         System.out.println(team5.challengeFive(array5,word));
         printArr(array5);
 
+        long time5 = System.currentTimeMillis();
+        time5 = System.currentTimeMillis() - time5;
+        System.out.println();
+        System.out.println("Challenge One Time Taken: "+time5*0.001+" Seconds");
     }
     public static void printArr(Comparable[] arr){
         for (int i = 0;i<arr.length;i++){
