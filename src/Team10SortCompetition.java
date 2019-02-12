@@ -24,12 +24,12 @@ public class Team10SortCompetition extends SortCompetition {
         for(int i = 0; i < arr.length; i++){
             insertionSort(arr[i]);
         }
+        quickSort(arr, 0, arr.length-1);
         int[] medians = new int[arr.length];
-        for(int i = 0 ; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++){
             medians[i] = getMedian(arr[i]);
         }
-        insertionSort(medians);
-        return(getMedian(medians));
+        return getMedian(medians);
     }
 
     @Override
@@ -42,6 +42,13 @@ public class Team10SortCompetition extends SortCompetition {
     public String greeting() {
         return "THIS IS TEAM 10, WHO THE HELLA FREAKIN YOU?";
     }
+
+    public static void swap(int[][] arr, int a, int b){
+        int[] temp = arr[a];
+        arr[a]=arr[b];
+        arr[b] = temp;
+    }
+
 
     public static void swap(Comparable[] arr, int a, int b){
         Comparable temp = arr[a];
@@ -66,6 +73,34 @@ public class Team10SortCompetition extends SortCompetition {
         arr[a]=arr[b];
         arr[b] = temp;
     }
+
+    //Quicksort for Int Arrays
+    public static void quickSort(int[][] arr, int low, int high)
+    {
+        if (low < high)
+        {
+            int split = quickSortHelper(arr, low, high);
+
+            quickSort(arr, low, split - 1);  // Before pi
+            quickSort(arr, split +1, high); // After pi
+        }
+    }
+
+    public static int quickSortHelper(int[][] arr, int low, int high){
+        int[] top = arr[high];
+        int i = low -1;
+
+        for (int j = low; j < high; j++){
+            if(getMedian(arr[j]) <= getMedian(top)){
+                i++;
+                swap(arr, i ,j);
+            }
+        }
+        i++;
+        swap(arr, i, high);
+        return i;
+    }
+    //
 
     //Quicksort for Ints
     public static void quickSort(int[] arr, int low, int high)
