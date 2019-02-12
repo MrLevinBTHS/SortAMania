@@ -225,9 +225,11 @@ public class Team7SortCompetition extends SortCompetition {
             }
             else if (l > 0) {
                 i = k + 1;
+                k = i + (j - i) / 2;
             }
             else {
                 j = k - 1;
+                k = i + (j - i) / 2;
         }
         }
         return -1;
