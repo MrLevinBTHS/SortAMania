@@ -23,9 +23,11 @@ public class Team11SortCompetition extends SortCompetition {
 
     @Override
     public int challengeFour(int[][] arr) {
-        for(int i=0;i<arr.length;i++){
+
+        for(int i=0;i<arr.length;i++) {
             insertionSort(arr[i]);
         }
+        quickSort(arr,0,arr.length-1);
         int[] med=new int[arr.length];
         for(int j=0;j<arr.length;j++){
             med[j]=FindMedian(arr[j]);
@@ -110,6 +112,7 @@ public class Team11SortCompetition extends SortCompetition {
         mergeSortHelper(arr,0,n-1,temp);
     }
 
+
     public static void mergeSortHelper(int[] arr, int left, int right,int[]temp){
         if(left<right){
             int mid=(left+right)/2;
@@ -118,34 +121,35 @@ public class Team11SortCompetition extends SortCompetition {
             merge(arr,left,mid,right,temp);
         }
     }
+
+
     public static void insertionSort(int[] arr)
     {
-        for (int i=1; i<arr.length; i++)
-        {
-            int currentVal = arr[i];
-            int lastVal = i-1;
-            while (lastVal>=0 && arr[lastVal] > currentVal)
-            {
-                arr[lastVal+1] = arr[lastVal];
-                lastVal = lastVal-1;
+        for (int i = 1; i < arr.length; i++){
+            for (int j = i; j > 0; j--){
+                if(arr[j-1] > arr[j]){
+                    swap(arr, j, j-1);
+                }
+                else {
+                    break;
+                }
             }
-            arr[lastVal+1] = currentVal;
         }
     }
 
     public static void insertionSort(Comparable[] arr){
-        for (int i=1; i<arr.length; i++)
-        {
-            Comparable currentVal = arr[i];
-            int lastVal = i-1;
-            while (lastVal>=0 && arr[lastVal].compareTo(arr[i])>0)
-            {
-                arr[lastVal+1] = arr[lastVal];
-                lastVal = lastVal-1;
+        for (int i = 1; i < arr.length; i++){
+            for (int j = i; j > 0; j--){
+                if(arr[j-1].compareTo(arr[j]) > 0){
+                    swap(arr, j, j-1);
+                }
+                else {
+                    break;
+                }
             }
-            arr[lastVal+1] = currentVal;
         }
     }
+
 
     public static void swap(int[]arr, int i, int j){
         int temp=arr[i];
@@ -159,11 +163,11 @@ public class Team11SortCompetition extends SortCompetition {
     }
 
     public static int FindMedian(int[] arr){
-        if(arr.length%2==0){
-            return (arr[arr.length/2]+arr[(arr.length/2)-1])/2;
-        } else {
-            return arr[arr.length/2];
-        }
+            if(arr.length%2==0){
+                return (arr[arr.length/2]+arr[(arr.length/2)-1])/2;
+            } else {
+                return arr[arr.length/2];
+            }
     }
     public static int binarySearch(Comparable[] arr, Comparable x) {
         int l = 0;
@@ -258,6 +262,44 @@ public class Team11SortCompetition extends SortCompetition {
         arr[high] = temp;
 
         return i+1;
+    }
+    public static void quickSort(int[][] arr,int low,int high){
+        if (low < high)
+        {
+            int pi = partition(arr, low, high);
+
+            quickSort(arr, low, pi-1);
+            quickSort(arr, pi+1, high);
+        }
+    }
+
+    public static int partition(int[][] arr,int low,int high){
+        int[] pivot = arr[high];
+        int i = (low-1); // index of smaller element
+        for (int j=low; j<high; j++)
+        {
+            // If current element is smaller than or
+            // equal to pivot
+            if (FindMedian(arr[j]) <= FindMedian(pivot))
+            {
+                i++;
+
+                // swap arr[i] and arr[j]
+                swap(arr,i,j);
+            }
+        }
+
+        // swap arr[i+1] and arr[high] (or pivot)
+        swap(arr,i,high);
+
+        return i+1;
+    }
+
+    public static void swap(int[][]arr,int i, int j){
+        int[] temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+
     }
 
     public static void quickSort(int[] arr, int low, int high)
@@ -445,5 +487,9 @@ public class Team11SortCompetition extends SortCompetition {
             quickSortString(arr, pi+1, high);
         }
     }
+
+
+
+
 
 }
