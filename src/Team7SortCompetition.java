@@ -176,11 +176,9 @@ public class Team7SortCompetition extends SortCompetition {
     //--------------------------------CHALLENGE FOUR----------------------------------------------------------------
     public static void insertionSort4(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i; j > 0; j--) {
+            for (int j = i; j >= 0; j--) {
                 if (arr[j - 1] > arr[j]) {
                     swap4(arr, j, j - 1);
-                } else {
-                    break;
                 }
             }
         }
@@ -217,7 +215,7 @@ public class Team7SortCompetition extends SortCompetition {
     public static int binarySearch5(Comparable[] arr, Comparable a) {
         int i = 0;
         int j = arr.length - 1;
-        int k = i + (j - i) / 2;
+        int k = i+ (j - i) / 2;
         int l = a.compareTo(arr[k]);
         while (i <= j) {
             if (l == 0) {
