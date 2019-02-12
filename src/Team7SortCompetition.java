@@ -215,7 +215,7 @@ public class Team7SortCompetition extends SortCompetition {
     public static int binarySearch5(Comparable[] arr, Comparable a) {
         int i = 0;
         int j = arr.length - 1;
-        int k = i + (j - i) / 2;
+        int k = i+ (j - i) / 2;
         int l = a.compareTo(arr[k]);
         while (i <= j) {
             if (l == 0) {
