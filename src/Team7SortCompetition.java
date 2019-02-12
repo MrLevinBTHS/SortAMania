@@ -28,7 +28,7 @@ public class Team7SortCompetition extends SortCompetition {
         return getMedian3(arr);
     }
 
-    public int challengeFour(int[][] arr) {
+    public int challengeFour(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             insertionSort4(arr[i]);
         }
