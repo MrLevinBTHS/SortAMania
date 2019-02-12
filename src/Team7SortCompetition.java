@@ -220,12 +220,15 @@ public class Team7SortCompetition extends SortCompetition {
         int k = i + (j - i) / 2;
         int l = a.compareTo(arr[k]);
         while (i <= j) {
-            if (l == 0)
+            if (l == 0) {
                 return k;
-            if (l > 0)
+            }
+            else if (l > 0) {
                 i = k + 1;
-            else
+            }
+            else {
                 j = k - 1;
+        }
         }
         return -1;
     }
