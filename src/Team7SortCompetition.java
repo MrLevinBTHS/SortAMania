@@ -176,11 +176,9 @@ public class Team7SortCompetition extends SortCompetition {
     //--------------------------------CHALLENGE FOUR----------------------------------------------------------------
     public static void insertionSort4(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i; j > 0; j--) {
+            for (int j = i; j >= 0; j--) {
                 if (arr[j - 1] > arr[j]) {
                     swap4(arr, j, j - 1);
-                } else {
-                    break;
                 }
             }
         }
