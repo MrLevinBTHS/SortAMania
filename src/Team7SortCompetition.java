@@ -258,23 +258,19 @@ public class Team7SortCompetition extends SortCompetition {
             }
         }
     }
-    public static int binarySearch5(Comparable[] arr, Comparable a) {
-        int i = 0;
-        int j = arr.length - 1;
-        int k = i+ (j - i) / 2;
-        int l = a.compareTo(arr[k]);
-        while (i <= j) {
-            if (l == 0) {
-                return k;
-            }
-            else if (l > 0) {
-                i = k + 1;
-                k = i + (j - i) / 2;
-            }
-            else {
-                j = k - 1;
-                k = i + (j - i) / 2;
-        }
+
+    public static int binarySearch5(Comparable[] arr, Comparable x) {
+        int a = 0;
+        int b = arr.length - 1;
+        while (a <= b) {
+            int d = a + (b - a) / 2;
+            int c = x.compareTo(arr[d]);
+            if (c == 0)
+                return d;
+            if (c > 0)
+                a = d + 1;
+            else
+                b = d - 1;
         }
         return -1;
     }
