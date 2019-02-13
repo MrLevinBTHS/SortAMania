@@ -38,12 +38,7 @@ public class Team12SortCompetition extends SortCompetition {
     @Override
     public int challengeFive(Comparable[] arr, Comparable query) {
         mergeSort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == query) {
-                return i;
-            }
-        }
-        return -1;
+        return binarySearch(arr, query);
     }
 
 
@@ -365,48 +360,66 @@ public class Team12SortCompetition extends SortCompetition {
         }
         System.out.println(out + "\n");
     }
-
-    public void mergeSort(Comparable[] arr) {
-        int n = arr.length;
-        Comparable[] temp = new Comparable[n];
-        mergeSortHelper(arr, 0, n - 1, temp);
+// comparable code
+    public static int binarySearch(Comparable[] arr, Comparable thing) {
+        int leftPos = 0;
+        int rightPos = arr.length - 1;
+        while (leftPos <= rightPos) {
+            int mid = (leftPos + rightPos) / 2;
+            if (arr[mid] == thing) {
+                return mid;
+            } else if (arr[mid].compareTo(thing) > 0) {
+                rightPos = mid - 1;
+            } else if (arr[mid].compareTo(thing) < 0) {
+                leftPos = mid + 1;
+            }
+        }
+        return -1;
     }
 
-    public void mergeSortHelper(Comparable[] arr, int left, int right, Comparable[] temp) {
-        if (left > right) {
-            int mid = (left + right) / 2;
-            mergeSortHelper(arr, left, mid, temp);
-            mergeSortHelper(arr, mid + 1, right, temp);
-            merge(arr, left, mid, right, temp);
+    public static void mergeSort(Comparable[] arr) {
+        int length = arr.length;
+        Comparable[] temp = new Comparable[length];
+        mergeSortHelper(arr, 0, length - 1, temp);
+    }
+
+    private static void mergeSortHelper(Comparable[] arr, int low, int high, Comparable[] temp) {
+        if (low < high) {
+            int mid = (low + high) / 2;
+            mergeSortHelper(arr, low, mid, temp);
+            mergeSortHelper(arr, mid + 1, high, temp);
+            merge(arr, low, mid, high, temp);
         }
     }
 
-    public void merge(Comparable[] elements, int from, int mid, int to, Comparable[] temp) {
-        int i = from;
+    private static void merge(Comparable[] arr, int low, int mid, int high, Comparable[] temp) {
+        int i = low;
         int j = mid + 1;
-        int k = from;
-        while (i <= mid && j <= to) {
-            if (elements[i].compareTo(elements[j]) < 0) {
-                temp[k] = elements[i];
+        int k = low;
+        while (i <= mid && j <= high) {
+            if (arr[i].compareTo(arr[j]) < 0) {
+                temp[k] = arr[i];
                 i++;
             } else {
-                temp[k] = elements[j];
+                temp[k] = arr[j];
                 j++;
             }
             k++;
         }
         while (i <= mid) {
-            temp[k] = elements[i];
+            temp[k] = arr[i];
             i++;
             k++;
         }
-        while (j <= to) {
-            temp[k] = elements[j];
+        while (j <= high) {
+            temp[k] = arr[j];
             j++;
             k++;
         }
-        for (k = from; k <= to; k++) {
-            elements[k] = temp[k];
+        for (k = low; k <= high; k++) {
+            arr[k] = temp[k];
         }
     }
+
 }
+
