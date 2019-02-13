@@ -20,18 +20,23 @@ public class Team12SortCompetition extends SortCompetition {
     @Override
     public int challengeFour(int[][] arr) {
         {
-            int[] medval = new int[arr.length];
-            for (int j = 0; j < arr.length; j++) {
-                medval[j] = challengeThree(arr[j]);
-            }
-            for (int i = 0; i < medval.length; i++) {
-                for (int j = i; j > 0; j--) {
-                    if (medval[j] < medval[j - 1]) {
-                        swap(medval, j, j - 1);
-                    }
+            int[] median = new int[arr.length];
+            int[] temp = new int[arr.length];
+            for (int j = 0; j < arr.length; j++)
+            {
+                for (int i = 0; i < arr[j].length; i++)
+                {
+                    temp[i]=arr[j][i];
                 }
+                insertionSort4(temp,0,temp.length-1);
+                for (int i = 0; i < arr[j].length; i++)
+                {
+                    arr [j] [i] = temp [i];
+                }
+                median[j] = getMedian(temp);
             }
-            return getMedian(medval);
+            insertionSort4(median,0,median.length-1);
+            return getMedian(median);
         }
     }
 
@@ -146,6 +151,21 @@ public class Team12SortCompetition extends SortCompetition {
                 } else {
                     break;
                 }
+            }
+        }
+    }
+
+    public static void insertionSort4(int [] in, int left, int right)
+    {
+        for (int i =left; i < right +1; i++)
+        {
+            for(int a = i; a >0; a--)
+            {
+                if (in[a]<in[a-1])
+                {
+                    swap(in,a,a-1);
+                }
+                else a = 0;
             }
         }
     }
